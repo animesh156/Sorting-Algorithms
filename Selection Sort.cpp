@@ -1,43 +1,48 @@
-
-
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
+void selectionSort(int arr[], int n)
+{
 
-void swap(int *a, int *b) {
-  int temp = *a;
-  *a = *b;
-  *b = temp;
-}
+  for (int i = 0; i < n - 1; i++)
+  {
+    int min_index = i;
 
-
-void printArray(int array[], int size) {
-  for (int i = 0; i < size; i++) {
-    cout << array[i] << " ";
-  }
-  cout << endl;
-}
-
-void selectionSort(int array[], int size) {
-  for (int step = 0; step < size - 1; step++) {
-    int min_idx = step;
-    for (int i = step + 1; i < size; i++) {
-
-      
-      if (array[i] < array[min_idx])
-        min_idx = i;
+    for (int j = i + 1; j < n; j++)
+    {
+      if (arr[min_index] > arr[j])
+        min_index = j;
     }
 
-   
-    swap(&array[min_idx], &array[step]);
+    swap(arr[min_index], arr[i]);
   }
 }
 
+void printArray(int arr[], int n)
+{
 
-int main() {
-  int arr[] = {20, 12, 10, 15, 2};
-  int size = sizeof(arr) / sizeof(arr[0]);
-  selectionSort(arr, size);
-  cout << "Sorted array in Acsending Order:\n";
-  printArray(arr, size);
+  for (int i = 0; i < n; i++)
+  {
+    cout << arr[i] << " ";
+  }
+  cout << "\n";
+}
+
+int main()
+{
+
+  int arr[] = {6, 3, 9, 23, 5, 1, 7};
+  int n = sizeof(arr) / sizeof(int);
+
+  cout << "unsorted array: ";
+
+  printArray(arr, n);
+
+  selectionSort(arr, n);
+
+  cout << "sorted array: ";
+
+  printArray(arr, n);
+
+  return 0;
 }
