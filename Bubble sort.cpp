@@ -1,42 +1,51 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// A function for bubble sort
-
 void bubbleSort(int arr[], int n)
 {
-    for (int i = 0; i < n - 1; i++)
+
+  for (int i = 0; i < n - 1; i++)
+  {
+    bool swapped = false;
+
+    for (int j = 0; j < (n - i - 1); j++)
     {
-        for (int j = 0; j < n - i - 1; j++)
-        {
-            if (arr[j] > arr[j + 1])
-            {
-                swap(arr[j], arr[j + 1]);
-            }
-        }
+      if (arr[j] > arr[j + 1])
+      {
+        swap(arr[j], arr[j + 1]);
+        swapped = true;
+      }
     }
+    if (swapped = false)
+    {
+      break;
+    }
+  }
 }
 
-// function to print sorted array
-
-void printarray(int arr[], int n)
+void printArray(int arr[], int n)
 {
 
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
+  for (int i = 0; i < n; i++)
+  {
+    cout << arr[i] << " ";
+  }
+  cout <<endl;
 }
-
 int main()
 {
+  int arr[] = {6, 2, 9, 4, 1, 8};
+  int n = sizeof(arr) / sizeof(int);
 
-    int a[] = {13, 46, 24, 52, 20, 9};
+  cout << "Unsorted array: ";
 
-    int n = sizeof(a) / sizeof(a[0]);
+  printArray(arr, n);
 
-    bubbleSort(a, n);
-    printarray(a, n);
+  bubbleSort(arr, n);
 
-    return 0;
+  cout << "Sorted array: ";
+
+  printArray(arr, n);
+
+  return 0;
 }
